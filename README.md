@@ -106,3 +106,10 @@ List<VisionDetRet> personList = pedestrianDet.detect(imgPath);
 
 ### License
 [License](LICENSE.md)
+
+
+Add alias to dlib_android build by
+```
+$ cd dlib/src/main/jniLibs/arm64-v8a
+$ ln -s ../../../../../../../build/libandroid_dlib.so libandroid_dlib.so
+```

@@ -358,13 +358,21 @@ public class CameraConnectionFragment extends Fragment {
             }
 
             Integer num_facing_back_camera = cameraFaceTypeMap.get(CameraCharacteristics.LENS_FACING_BACK);
+            Integer num_facing_front_camera = cameraFaceTypeMap.get(CameraCharacteristics.LENS_FACING_FRONT);
             for (final String cameraId : manager.getCameraIdList()) {
                 final CameraCharacteristics characteristics = manager.getCameraCharacteristics(cameraId);
                 final Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
                 // If facing back camera or facing external camera exist, we won't use facing front camera
-                if (num_facing_back_camera != null && num_facing_back_camera > 0) {
+                /*if (num_facing_back_camera != null && num_facing_back_camera > 0) {
                     // We don't use a front facing camera in this sample if there are other camera device facing types
                     if (facing != null && facing == CameraCharacteristics.LENS_FACING_FRONT) {
+                        continue;
+                    }
+                }*/
+
+                if (num_facing_front_camera != null && num_facing_front_camera > 0) {
+                    // We don't use a front facing camera in this sample if there are other camera device facing types
+                    if (facing != null && facing == CameraCharacteristics.LENS_FACING_BACK) {
                         continue;
                     }
                 }
